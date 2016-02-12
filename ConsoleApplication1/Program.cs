@@ -19,13 +19,27 @@ namespace ConsoleApplication1
         {
             var driver = new ChromeDriver(); // Should work in other Browser Drivers
 
-            List<string> links = new List<string>();
-            links.Add("http://www.codeproject.com");
-            //links.Add("http://www.google.com");
+            string baseLink = "http://www.codeproject.com";
 
-            foreach (var link in links)
+            //foreach (var link in links)
+            for (int i = 2326; i > 2325; i--)
             {
+                string link = baseLink + i.ToString();
                 driver.Navigate().GoToUrl(link);
+                try
+                {
+                    var login = driver.FindElementById("Button1");
+                    var uName = driver.FindElementByName("lname");
+                    var pass = driver.FindElementByName("passw");
+                    uName.SendKeys("admin");
+                    pass.SendKeys("*******");
+                    login.Submit();
+                }
+                catch
+                {
+                    //already logged in 
+
+                }
                 Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
 
                 //Use it as you want now
