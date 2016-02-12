@@ -32,8 +32,7 @@ namespace ConsoleApplication1
                 string screenshot = ss.AsBase64EncodedString;
                 byte[] screenshotAsByteArray = ss.AsByteArray;
                 FileNameFromURL fileNameFromURL = new ConsoleApplication1.FileNameFromURL();
-                string filePath = "C:\\pp\\dotnet\\ConsoleApplication1\\ConsoleApplication1\\bin\\Debug\\"
-                    + fileNameFromURL.ConvertToWindowsFileName(link) + ".jpg";
+                string filePath = Application.StartupPath + fileNameFromURL.ConvertToWindowsFileName(link) + ".jpg";
                 if (File.Exists(filePath))
                 {
                     File.Delete(filePath);
